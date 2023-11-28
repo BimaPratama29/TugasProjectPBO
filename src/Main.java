@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         Main menuutama = new Main();
         menuutama.Menu();
-//mvjdvjfvfjdb fb
+
         //cek file
         ModelJSONAdmin modelJSONAdmin = new ModelJSONAdmin();
         System.out.println(modelJSONAdmin.cekFile());
