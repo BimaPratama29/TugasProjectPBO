@@ -69,29 +69,7 @@ public class MenuLogin {
         }while(plh > 3);
     }
 
-    public class MenuLogin{
-        public void menuAdmin(){
-            System.out.println(" ============================== ");
-            System.out.println("           Menu Admin ");
-            System.out.println(" ============================== ");
-            System.out.println("\n 1. View User \n 2. Pembayaran \n 3. Kembali");
-            System.out.println(" Pilih Opsi : ");
-            int plh = input.nextInt();
-            do {
-                switch (plh){
-                    case 1:
-                        //viewUSer
-                        break;
-                    case 2:
-                        //Pembayaran
-                        break;
-                    case 3:
-                        exit(0);
-                    default :
-                        System.out.println(" Pilihan Tidak Tersedia.");
-                }
-            }while(plh > 3);
-        }
+
 
         public void pesan(){
             //PilihBooking
