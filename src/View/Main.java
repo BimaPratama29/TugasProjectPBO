@@ -1,8 +1,20 @@
 package View;
 
+import ModelJSON.ModelJSONUser;
+import Node.NodeUser;
+
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
+        ModelJSONUser modelJSONUser = new ModelJSONUser();
+        ArrayList <NodeUser> listUser1 = new ArrayList<>();
+        listUser1.add(new NodeUser("bima29" , "ingatskripsi"));
+        listUser1.add(new NodeUser("yoga21","skripsibisa"));
+        modelJSONUser.writeFileJSON(listUser1);
+        for(NodeUser user : listUser1){
+            System.out.println("Username : " +user.uname);
+            System.out.println("Password : " +user.pass);
+        }
         Scanner input = new Scanner(System.in);
 
         int plh;
