@@ -30,7 +30,7 @@ public class Main {
         //listadmin1.add(new NodeAdmin("admin1","polo"));
         //listadmin1.add(new NodeAdmin("admin2","polo2"));
 
-
+//tes
     }
 
     public void Menu(){
