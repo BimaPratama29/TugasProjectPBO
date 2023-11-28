@@ -1,14 +1,10 @@
 package ModelJSON;
 
-import Node.NodeAdmin;
-import Node.NodeUserSewa;
 import NodeJSON.NodeJSONSewa;
 import com.github.cliftonlabs.json_simple.JsonArray;
 import com.github.cliftonlabs.json_simple.JsonObject;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class ModelJSONAdmin {
@@ -30,7 +26,7 @@ public class ModelJSONAdmin {
         return  cek;
     }
 
-    public JsonArray convertArrayListtoJSONArray(ArrayList<NodeUserSewa> listuser) {
+    public JsonArray convertArrayListtoJSONArray(ArrayList<NodeUser> listuser) {
         if (listuser == null) {
             return null;
         } else {

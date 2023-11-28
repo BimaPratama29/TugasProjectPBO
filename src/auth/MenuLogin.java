@@ -1,36 +1,35 @@
-import ModelJSON.ModelJSONAdmin;
-import org.w3c.dom.Node;
+package auth;
 
-import java.sql.SQLOutput;
+import Model.MainMenuAdmin;
+import ModelJSON.ModelJSONAdmin;
+
 import java.util.ArrayList;
 
-import ModelJSON.ModelJSONAdmin;
-import Node.NodeAdmin;
+import Node.NodeUser;
 import java.util.Scanner;
 
 
 //import static auth.MainMenu.input;
 import static java.lang.System.exit;
 
-public class Main {
+public class MenuLogin {
     Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        Main menuutama = new Main();
-        menuutama.Menu();
+
 
         //cek file
         ModelJSONAdmin modelJSONAdmin = new ModelJSONAdmin();
         System.out.println(modelJSONAdmin.cekFile());
 
         //convert arraylist ke jsonarray
-        ArrayList<NodeAdmin>list = null;
+        ArrayList<NodeUser>list = null;
         //System.out.println(modelJSONAdmin.convertArrayListtoJSONArray(list));
 
-        ArrayList<NodeAdmin>listadmin1 = new ArrayList<>();
-        listadmin1.add(new NodeAdmin("admin1","polo"));
-        listadmin1.add(new NodeAdmin("admin2","polo2"));
+        ArrayList<NodeUser>listadmin1 = new ArrayList<>();
+        listadmin1.add(new NodeUser("admin1","polo"));
+        listadmin1.add(new NodeUser("admin2","polo2"));
 
-//tes
+
     }
 
     public void Menu(){
@@ -47,7 +46,7 @@ public class Main {
                 case 1:
                     //user
                     System.out.println("Masukkan Username : ");
-                    String email = input.nextLine();
+                    String uname = input.nextLine();
                     System.out.println("Masukkan Password : ");
                     String pass = input.nextLine();
                     //GotomenuUser
@@ -56,11 +55,11 @@ public class Main {
                 case 2:
                     //admin
                     System.out.println("Masukkan Username Admin : ");
-                    String email = input.nextLine();
+                    String uname = input.nextLine();
                     System.out.println("Masukkan Password Admin : ");
                     String pass = input.nextLine();
-                    //GotoMenuAdmin
-                    MenuLogin.menuAdmin();
+                    //GotoMainMenuAdmin
+                    MainMenuAdmin.main(null);
                     break;
                 case 3:
                     exit(0);
