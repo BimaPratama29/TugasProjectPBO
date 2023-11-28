@@ -26,9 +26,9 @@ public class Main {
         ArrayList<NodeAdmin>list = null;
         //System.out.println(modelJSONAdmin.convertArrayListtoJSONArray(list));
 
-        //ArrayList<NodeAdmin>listadmin1 = new ArrayList<>();
-        //listadmin1.add(new NodeAdmin("admin1","polo"));
-        //listadmin1.add(new NodeAdmin("admin2","polo2"));
+        ArrayList<NodeAdmin>listadmin1 = new ArrayList<>();
+        listadmin1.add(new NodeAdmin("admin1","polo"));
+        listadmin1.add(new NodeAdmin("admin2","polo2"));
 
 
     }
