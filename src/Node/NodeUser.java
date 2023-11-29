@@ -10,6 +10,9 @@ public class NodeUser {
         this.pass = pass;
 
     }
+    public NodeUser(){
+
+    }
 
     public void ViewUserSewa(){
         System.out.println("Username : " + this.uname);

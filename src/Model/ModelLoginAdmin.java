@@ -9,7 +9,7 @@ public class ModelLoginAdmin {
         this.admin = new NodeLoginAdmin();
     }
 
-    public Boolean cekLogin(String user, String pass) {
-        return admin.getAdmin().equals(user) && admin.getPass().equals(pass);
+    public Boolean cekLogin(String user, String pass1) {
+        return admin.getAdmin().equals(user) && admin.getPass1().equals(pass1);
     }
 }

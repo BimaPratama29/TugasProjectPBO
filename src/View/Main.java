@@ -8,15 +8,6 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
         ModelLoginAdmin admin = new ModelLoginAdmin();
-        ModelJSONUser modelJSONUser = new ModelJSONUser();
-        ArrayList <NodeUser> listUser1 = new ArrayList<>();
-        listUser1.add(new NodeUser("bima29" , "ingatskripsi"));
-        listUser1.add(new NodeUser("yoga21","skripsibisa"));
-        modelJSONUser.writeFileJSON(listUser1);
-        for(NodeUser user : listUser1){
-            System.out.println("Username : " +user.uname);
-            System.out.println("Password : " +user.pass);
-        }
         Scanner input = new Scanner(System.in);
 
         int plh;
@@ -36,19 +27,41 @@ public class Main {
             switch (plh) {
                 case 1:
                     //user
+                    ModelJSONUser modelJSONUser = new ModelJSONUser();
+                    ArrayList <NodeUser> listUser1 = new ArrayList<>();
+                    listUser1.add(new NodeUser("bima29" , "ingatskripsi"));
+                    listUser1.add(new NodeUser("yoga21","skripibisa"));
+                    listUser1.add(new NodeUser("koga21","1234567"));
+                    listUser1.add(new NodeUser("Saya","000000000000"));
+                    modelJSONUser.writeFileJSON(listUser1);
+                    //for(NodeUser user : listUser1){
+                    //  System.out.println("Username : " +user.uname);
+                    //System.out.println("Password : " +user.pass);
+                    //}
                     System.out.println("Masukkan Username : ");
-                    //String uname = input.nextLine();
+                    String uname = input.nextLine();
                     System.out.println("Masukkan Password : ");
-                    //String pass = input.nextLine();
-                    MenuUser.ListMenuUser();
+                    String pass = input.nextLine();
+
+                    //NodeUser nodeUser = new NodeUser();
+                    if(uname.equals(uname)){
+                        if(pass.equals(pass)){
+                            System.out.println("anda berhasil login");
+                            MenuUser.ListMenuUser();
+
+                        }
+                    }
+                    else{
+                        System.out.println("Username || password anda salah");
+                    }
                     break;
                 case 2:
                     //admin
                     System.out.println("Masukkan Username Admin : ");
                     String user = input.nextLine();
                     System.out.println("Masukkan Password Admin : ");
-                    String pass = input.nextLine();
-                    if(admin.cekLogin(user, pass)){
+                    String pass1 = input.nextLine();
+                    if(admin.cekLogin(user, pass1)){
                         System.out.println("Anda Berhasil Login");
                         MenuAdmin.ListMenuAdmin();
                         break;
