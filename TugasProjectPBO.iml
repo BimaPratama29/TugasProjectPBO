@@ -10,7 +10,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jar_files.zip!/" />
+          <root url="jar://$USER_HOME$/jar_files.zip!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,16 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../json-simple-4.0.1.jar!/" />
+          <root url="jar://$USER_HOME$/json-simple-4.0.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/json-simple-1.1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -28,7 +37,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../json-simple-1.1.1.jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/json-simple-1.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
