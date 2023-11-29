@@ -1,13 +1,11 @@
 package View;
 
-import Model.ModelLoginAdmin;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        ModelLoginAdmin admin = new ModelLoginAdmin();
         ModelJSONUser modelJSONUser = new ModelJSONUser();
         ArrayList <NodeUser> listUser1 = new ArrayList<>();
         listUser1.add(new NodeUser("bima29" , "ingatskripsi"));
@@ -45,16 +43,11 @@ public class Main {
                 case 2:
                     //admin
                     System.out.println("Masukkan Username Admin : ");
-                    String user = input.nextLine();
+                    //String uname = input.nextLine();
                     System.out.println("Masukkan Password Admin : ");
-                    String pass = input.nextLine();
-                    if (admin.cekLogin(user , pass)){
-                        System.out.println("Anda Berhasil login");
-                        MenuAdmin.ListMenuAdmin();
-                        break;
-                    }else{
-                        System.out.println("User Dan Password Salah");
-                    }
+                    //String pass = input.nextLine();
+                    //GotoMainMenuAdmin
+                    MenuAdmin.ListMenuAdmin();
                     break;
                 case 3:
                     break;
