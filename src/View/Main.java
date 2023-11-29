@@ -34,17 +34,17 @@ public class Main {
             switch (plh) {
                 case 1:
                     //user
-                    System.out.println("Masukkan Username : ");
+                    System.out.print("Masukkan Username : ");
                     //String uname = input.nextLine();
-                    System.out.println("Masukkan Password : ");
+                    System.out.print("Masukkan Password : ");
                     //String pass = input.nextLine();
                     MenuUser.ListMenuUser();
                     break;
                 case 2:
                     //admin
-                    System.out.println("Masukkan Username Admin : ");
+                    System.out.print("Masukkan Username Admin : ");
                     //String uname = input.nextLine();
-                    System.out.println("Masukkan Password Admin : ");
+                    System.out.print("Masukkan Password Admin : ");
                     //String pass = input.nextLine();
                     //GotoMainMenuAdmin
                     MenuAdmin.ListMenuAdmin();
