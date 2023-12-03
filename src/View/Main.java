@@ -1,13 +1,13 @@
 package View;
 
-import Model.ModelLoginAdmin;
+import Model.ModelAdmin;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
-        ModelLoginAdmin admin = new ModelLoginAdmin();
+        ModelAdmin admin = new ModelAdmin();
         Scanner input = new Scanner(System.in);
 
         int plh;
