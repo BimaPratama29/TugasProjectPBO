@@ -1,6 +1,7 @@
 package ModelJSON;
 
 import Node.NodeUser;
+import NodeJSON.NodeJSONUser;
 import NodeJSON.NodeJSONSewa;
 import NodeJSON.NodeJSONUser;
 import org.json.simple.JSONArray;
@@ -10,8 +11,11 @@ import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ModelJSONUser {
+    NodeJSONUser nodeJSONUser = new NodeJSONUser();
+    static Scanner input = new Scanner(System.in);
     public String fname = "src/Database/user.json";
 
     public boolean cekFile() {
@@ -25,23 +29,23 @@ public class ModelJSONUser {
         return  cek;
     }
 
-    public JSONArray convertArrayListtoJSONArray(ArrayList<NodeUser> listuser){
-        if(listuser == null){
+    public JSONArray convertArrayListtoJSONArray(ArrayList<NodeUser> listUser){
+        if(listUser == null){
             return null;
         }else{
          JSONArray arrayUser = new JSONArray();
-         for(NodeUser nUser : listuser){
+         for(NodeUser nUser : listUser){
              JSONObject objUser = new JSONObject();
-             objUser.put("username",nUser.uname);
-             objUser.put("password",nUser.pass);
+             objUser.put(nodeJSONUser.getUname(),nUser.getUname());
+             objUser.put(nodeJSONUser.getPass(),nUser.getPass());
              arrayUser.add(objUser);
          }
          return arrayUser;
         }
     }
 
-    public void writeFileJSON(ArrayList <NodeUser> listUser){
-        JSONArray arrayUser = convertArrayListtoJSONArray(listUser);
+    public void writeFileJSON(ArrayList <NodeUser> listuser){
+        JSONArray arrayUser = convertArrayListtoJSONArray(listuser);
         try{
             FileWriter file = new FileWriter(fname);
             file.write(arrayUser.toJSONString());
@@ -50,6 +54,23 @@ public class ModelJSONUser {
         }
         catch (Exception e){
             throw new RuntimeException(e);
+        }
+    }
+
+
+    public ArrayList <NodeUser> convertJSONArraytoArrayList (JSONArray arrayUser){
+        if (arrayUser == null){
+            return  null;
+        }
+        else{
+            ArrayList <NodeUser> listUser = new ArrayList<>();
+            for (Object objUser : arrayUser){
+                JSONObject User = (JSONObject) objUser;
+                String uname = User.get("username").toString();
+                String pass = User.get("password").toString();
+                listUser.add(new NodeUser(uname,pass));
+            }
+            return listUser;
         }
     }
 
@@ -76,19 +97,5 @@ public class ModelJSONUser {
         }
         return listUser;
     }
-    public ArrayList <NodeUser> convertJSONArraytoArrayList (JSONArray arrayUser){
-        if (arrayUser == null){
-            return  null;
-        }
-        else{
-            ArrayList <NodeUser> listUser = new ArrayList<>();
-            for (Object objUser : arrayUser){
-                JSONObject User = (JSONObject) objUser;
-                String uname = User.get("username").toString();
-                String pass = User.get("password").toString();
-                listUser.add(new NodeUser(uname,pass));
-            }
-            return listUser;
-        }
-    }
+
 }

@@ -6,6 +6,8 @@ import Node.NodeUser;
 
 import java.util.*;
 public class Main {
+    ModelJSONUser modelJSONUser = new ModelJSONUser();
+    ArrayList <NodeUser> listUser1 = new ArrayList<>();
     public static void main(String[] args) {
         ModelLoginAdmin admin = new ModelLoginAdmin();
         Scanner input = new Scanner(System.in);
