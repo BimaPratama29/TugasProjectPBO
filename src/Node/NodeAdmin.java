@@ -1,10 +1,10 @@
 package Node;
 
-public class NodeLoginAdmin{
+public class NodeAdmin {
     String admin;
     String pass1;
 
-    public NodeLoginAdmin() {
+    public NodeAdmin() {
         this.admin = "admin";
         this.pass1 = "admin";
     }

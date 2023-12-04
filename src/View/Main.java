@@ -1,6 +1,6 @@
 package View;
 
-import Model.ModelLoginAdmin;
+import Model.ModelAdmin;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
@@ -9,7 +9,7 @@ public class Main {
     ModelJSONUser modelJSONUser = new ModelJSONUser();
     ArrayList <NodeUser> listUser1 = new ArrayList<>();
     public static void main(String[] args) {
-        ModelLoginAdmin admin = new ModelLoginAdmin();
+        ModelAdmin admin = new ModelAdmin();
         Scanner input = new Scanner(System.in);
 
         int plh;

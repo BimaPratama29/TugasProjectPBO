@@ -14,7 +14,7 @@ public class ModelJSONAdmin {
     public ModelJSONAdmin() {
         this.userf = "src/Database/admin.json";
     }
-
+    
     public boolean cekFile() {
         boolean cek = false;
         File file = new File(this.userf);
