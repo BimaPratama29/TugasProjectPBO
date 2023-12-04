@@ -11,7 +11,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         int plh;
-
+    
         System.out.println(" ============================== ");
         System.out.println("      ! Selamat Datang di ! ");
         System.out.println("        Rental PS ITATS ");

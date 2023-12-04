@@ -6,7 +6,7 @@ public class MenuUser {
     public static Scanner input = new Scanner(System.in);
     public static void ListMenuUser() {
         int plh;
-        do {
+        do {System.out.println("\n\n");
             System.out.println(" ============================== ");
             System.out.println("           Menu User ");
             System.out.println(" ============================== ");
