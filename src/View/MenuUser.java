@@ -37,7 +37,7 @@ public class MenuUser {
                     if (cUser.getListDatausers().get(i).uname.equals(username)) {
                         if (cUser.getListDatausers().get(i).pass.equals(password)) {
                             System.out.println("Anda berhasil login sebagai user");
-
+                            MenuUser.ListMenuUser();
                         }
                     }
                 }
