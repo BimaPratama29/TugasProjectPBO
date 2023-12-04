@@ -14,24 +14,24 @@ public class MenuUser {
             System.out.println(" ============================== ");
             System.out.println("           Menu User ");
             System.out.println(" ============================== ");
-            System.out.println("\n 1. Buat Akun  \n 2.Login \n 3. Kembali");
+            System.out.println("\n 1. Buat Akun  \n 2. Login \n 3. Kembali");
             System.out.println(" Pilih Opsi : ");
 
             plh = input.nextInt();
 
             if (plh == 1) {
                 System.out.println("--- Registrasi Akun ---");
-                System.out.println("Masukkan username : ");
+                System.out.print("Masukkan username : ");
                 String username = input.nextLine();
-                System.out.println("Masukkan password : ");
+                System.out.print("Masukkan password : ");
                 String password = input.nextLine();
                 cUser.RegisterUser(username, password);
                 System.out.println("Akun berhasil didaftarkan");
                 ListMenuUser();
             } else if (plh == 2) {
-                System.out.println("Masukkan username : ");
+                System.out.print("Masukkan username : ");
                 String username = input.nextLine();
-                System.out.println("Masukkan password : ");
+                System.out.print("Masukkan password : ");
                 String password = input.nextLine();
                 for (int i = 0; i < cUser.getListDatausers().size(); i++) {
                     if (cUser.getListDatausers().get(i).uname.equals(username)) {
@@ -43,8 +43,10 @@ public class MenuUser {
                 }
 
             } else {
+                Main.main(null);
                 break;
             }
+
 
         }
     }
