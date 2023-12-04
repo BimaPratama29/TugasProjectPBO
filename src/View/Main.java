@@ -1,6 +1,7 @@
 package View;
 
 import Model.ModelAdmin;
+import Model.ModelUser;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
@@ -11,6 +12,8 @@ public class Main {
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
         Scanner input = new Scanner(System.in);
+        ModelUser modelUser = new ModelUser();
+
 
         int plh;
 
@@ -31,32 +34,8 @@ public class Main {
                     //user
                     ModelJSONUser modelJSONUser = new ModelJSONUser();
                     ArrayList <NodeUser> listUser1 = new ArrayList<>();
-                    listUser1.add(new NodeUser("bima29" , "ingatskripsi"));
-                    listUser1.add(new NodeUser("yoga21","skripibisa"));
-                    listUser1.add(new NodeUser("koga21","1234567"));
-                    listUser1.add(new NodeUser("Saya","000000000000"));
-                    modelJSONUser.writeFileJSON(listUser1);
-                    //for(NodeUser user : listUser1){
-                    //  System.out.println("Username : " +user.uname);
-                    //System.out.println("Password : " +user.pass);
-                    //}
-                    System.out.println("Masukkan Username : ");
-                    String uname = input.nextLine();
-                    System.out.println("Masukkan Password : ");
-                    String pass = input.nextLine();
+                    MenuUser.ListMenuUser();
 
-                    //NodeUser nodeUser = new NodeUser();
-                    if(uname.equals(uname)){
-                        if(pass.equals(pass)){
-                            System.out.println("anda berhasil login");
-                            MenuUser.ListMenuUser();
-
-                        }
-                    }
-                    else{
-                        System.out.println("Username || password anda salah");
-                    }
-                    break;
                 case 2:
                     //admin
                     System.out.println("Masukkan Username Admin : ");

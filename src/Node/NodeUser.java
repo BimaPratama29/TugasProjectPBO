@@ -14,16 +14,24 @@ public class NodeUser {
 
     }
 
+    public void setUname(String uname) {
+        this.uname = uname;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public void ViewUserSewa(){
         System.out.println("Username : " + this.uname);
         System.out.println("Password : " + this.pass);
     }
 
     public String getUname() {
-        return uname;
+        return this.uname;
     }
     public String getPass() {
-        return pass;
+        return this.pass;
     }
 
     public class admin extends NodeUser {
