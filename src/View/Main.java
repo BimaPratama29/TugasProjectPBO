@@ -5,15 +5,17 @@ import Model.ModelUser;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Main {
     ModelJSONUser modelJSONUser = new ModelJSONUser();
-    ArrayList <NodeUser> listUser1 = new ArrayList<>();
+    ArrayList<NodeUser> listUser1 = new ArrayList<>();
+
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
         Scanner input = new Scanner(System.in);
         ModelUser modelUser = new ModelUser();
-
 
         int plh;
 
@@ -29,25 +31,24 @@ public class Main {
             plh = input.nextInt();
             input.nextLine();
 
-
             switch (plh) {
                 case 1:
-                    //user
+                    // User
                     ModelJSONUser modelJSONUser = new ModelJSONUser();
-                    ArrayList <NodeUser> listUser1 = new ArrayList<>();
+                    ArrayList<NodeUser> listUser1 = new ArrayList<>();
                     MenuUser.ListMenuUser();
 
                 case 2:
-                    //admin
+                    // Admin
                     System.out.println("Masukkan Username Admin : ");
                     String user = input.nextLine();
                     System.out.println("Masukkan Password Admin : ");
                     String pass1 = input.nextLine();
-                    if(admin.cekLogin(user, pass1)){
+                    if (admin.cekLogin(user, pass1)) {
                         System.out.println("Anda Berhasil Login");
                         MenuAdmin.ListMenuAdmin();
                         break;
-                    }else{
+                    } else {
                         System.out.println("user dan pass salah");
                     }
                     break;
@@ -56,10 +57,19 @@ public class Main {
                 default:
                     System.out.println(" Pilihan Tidak Tersedia.");
             }
-        }while (plh != 3);
+        } while (plh != 3);
+
+        // Bagian dari blok kode pertama
+        ModelJSONUser modelJSONUser = new ModelJSONUser();
+        ArrayList<NodeUser> userList = modelJSONUser.bacaDariJSON();
+
+        if (userList != null) {
+            System.out.println("Jumlah pengguna: " + userList.size());
+            for (NodeUser user : userList) {
+                System.out.println("Username: " + user.getUname() + ", Password: " + user.getPass());
+            }
+        } else {
+            System.out.println("Tidak ada data pengguna.");
+        }
     }
 }
-
-
-
-// afnjksfbhdsfbsdhfbsdhfb

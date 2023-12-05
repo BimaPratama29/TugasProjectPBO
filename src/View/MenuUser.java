@@ -12,9 +12,7 @@ public class MenuUser {
     public static Scanner input = new Scanner(System.in);
     public static void ListMenuUser() {
         int plh;
-
-
-        while (true) {
+        do {
             System.out.println(" ============================== ");
             System.out.println("           Menu User ");
             System.out.println(" ============================== ");
@@ -53,6 +51,6 @@ public class MenuUser {
                 Main.main(null);
                 break;
             }
-        }
+        }while (plh != 3);
     }
 }
