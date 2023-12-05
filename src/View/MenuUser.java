@@ -25,8 +25,8 @@ public class MenuUser {
 
 
             if (plh == 1) {
-                System.out.println(warna.color_purple+"--- Registrasi Akun ---"+warna.text_reset);
-                System.out.print(warna.color_blue+"Masukkan username : ");
+                System.out.println(warna.color_blue+"--- Registrasi Akun ---"+warna.text_reset);
+                System.out.print(warna.color_purple+"Masukkan username : ");
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
@@ -34,15 +34,15 @@ public class MenuUser {
                 System.out.println(warna.color_green+"Akun berhasil didaftarkan"+warna.text_reset);
                 ListMenuUser();
             } else if (plh == 2) {
-                System.out.print(warna.color_blue+"Masukkan username : ");
+                System.out.print(warna.color_purple+"Masukkan username : ");
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
                 for (int i = 0; i < cUser.getListDatausers().size(); i++) {
                     if (cUser.getListDatausers().get(i).uname.equals(username)) {
                         if (cUser.getListDatausers().get(i).pass.equals(password)) {
-                            System.out.println("Anda berhasil login sebagai user");
-                            MenuUser.ListMenuUser();
+                            System.out.println(warna.color_green+ "Anda berhasil login sebagai user"+warna.text_reset);
+                            MenuSewa.main(null);
                         }
                     }
                 }

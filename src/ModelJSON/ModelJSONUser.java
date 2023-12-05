@@ -90,7 +90,4 @@ public class ModelJSONUser {
         }
         return listUser;
     }
-    
-
-    // ... (metode atau atribut tambahan jika diperlukan)
 }

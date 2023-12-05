@@ -19,7 +19,7 @@ public class ModelUser {
     }
 
     public void ViewAllUserSewa() {
-        ArrayList<NodeUser> listuser = modelJSONUser.readFromJSON();
+        ArrayList<NodeUser> listuser = modelJSONUser.bacaDariJSON();
         if (listuser != null) {
             for (NodeUser user : listuser) {
                 user.ViewUserSewa();
