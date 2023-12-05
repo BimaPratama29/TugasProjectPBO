@@ -24,7 +24,8 @@ public class Main {
 
         do {
             System.out.println("\n 1. Penyewa \n 2. Admin \n 3. Exit");
-            System.out.println(" Pilih Menu Login. ");
+            System.out.println("=====================================");
+            System.out.print(" Pilih Menu Login. ");
             plh = input.nextInt();
             input.nextLine();
 
