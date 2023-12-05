@@ -1,8 +1,6 @@
 package ModelJSON;
 
 import Node.NodeUser;
-import NodeJSON.NodeJSONSewa;
-import NodeJSON.NodeJSONUser;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -13,82 +11,86 @@ import java.util.ArrayList;
 
 public class ModelJSONUser {
     public String fname = "src/Database/user.json";
+    public ArrayList<NodeUser> readFromJSON;
 
-    public boolean cekFile() {
-        boolean cek = false;
-        File file = new File(this.fname);
-        if (file.exists()){
-            cek = true;
-        }else{
-
-        }
-        return  cek;
+    public ModelJSONUser() {
+        // Konstruktor, jika diperlukan
     }
 
-    public JSONArray convertArrayListtoJSONArray(ArrayList<NodeUser> listuser){
-        if(listuser == null){
-            return null;
-        }else{
-         JSONArray arrayUser = new JSONArray();
-         for(NodeUser nUser : listuser){
-             JSONObject objUser = new JSONObject();
-             objUser.put("username",nUser.uname);
-             objUser.put("password",nUser.pass);
-             arrayUser.add(objUser);
-         }
-         return arrayUser;
-        }
-    }
+    public void tulisUserKeJSON(NodeUser penggunaBaru) {
+        ArrayList<NodeUser> penggunaSudahAda = bacaDariJSON();
 
-    public void writeFileJSON(ArrayList <NodeUser> listUser){
-        JSONArray arrayUser = convertArrayListtoJSONArray(listUser);
-        try{
+        if (penggunaSudahAda == null) {
+            penggunaSudahAda = new ArrayList<>();
+        }
+
+        penggunaSudahAda.add(penggunaBaru);
+        JSONArray arrayPengguna = konversiArrayListkeJSONArray(penggunaSudahAda);
+
+        try {
             FileWriter file = new FileWriter(fname);
-            file.write(arrayUser.toJSONString());
+            file.write(arrayPengguna.toJSONString());
             file.flush();
             file.close();
-        }
-        catch (Exception e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public ArrayList <NodeUser> readFromJSON(){
-        if(cekFile() == false){
-            return null;
+    public NodeUser loginPenggunaDariJSON(String username, String password) {
+        ArrayList<NodeUser> penggunaSudahAda = bacaDariJSON();
+
+        if (penggunaSudahAda != null) {
+            for (NodeUser pengguna : penggunaSudahAda) {
+                if (pengguna.getUname().equals(username) && pengguna.getPass().equals(password)) {
+                    return pengguna;
+                }
+            }
         }
-        ArrayList listUser = null;
+
+        return null; // Pengguna tidak ditemukan
+    }
+
+    private ArrayList<NodeUser> bacaDariJSON() {
         JSONParser parser = new JSONParser();
 
-        try{
+        try {
             Reader reader = new FileReader(fname);
             JSONArray arrayUser = (JSONArray) parser.parse(reader);
-            listUser = convertJSONArraytoArrayList(arrayUser);
-        }
-        catch (FileNotFoundException e){
+            return convertJSONArraytoArrayList(arrayUser);
+        } catch (FileNotFoundException e) {
+            // File belum ada, atau belum pernah disimpan sebelumnya
+            return null;
+        } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
-        catch (IOException e){
-            throw  new RuntimeException(e);
+    }
+
+    private JSONArray konversiArrayListkeJSONArray(ArrayList<NodeUser> listUser) {
+        JSONArray arrayUser = new JSONArray();
+        for (NodeUser nUser : listUser) {
+            JSONObject objUser = new JSONObject();
+            objUser.put("username", nUser.getUname());
+            objUser.put("password", nUser.getPass());
+            arrayUser.add(objUser);
         }
-        catch (ParseException e){
-            throw  new RuntimeException(e);
+        return arrayUser;
+    }
+
+    private ArrayList<NodeUser> convertJSONArraytoArrayList(JSONArray arrayUser) {
+        ArrayList<NodeUser> listUser = new ArrayList<>();
+        for (Object objUser : arrayUser) {
+            JSONObject user = (JSONObject) objUser;
+            String uname = (String) user.get("username");
+            String pass = (String) user.get("password");
+    
+            // Pemeriksaan null sebelum menambahkan ke list
+            if (uname != null && pass != null) {
+                listUser.add(new NodeUser(uname, pass));
+            }
         }
         return listUser;
     }
-    public ArrayList <NodeUser> convertJSONArraytoArrayList (JSONArray arrayUser){
-        if (arrayUser == null){
-            return  null;
-        }
-        else{
-            ArrayList <NodeUser> listUser = new ArrayList<>();
-            for (Object objUser : arrayUser){
-                JSONObject User = (JSONObject) objUser;
-                String uname = User.get("username").toString();
-                String pass = User.get("password").toString();
-                listUser.add(new NodeUser(uname,pass));
-            }
-            return listUser;
-        }
-    }
+    
+    // ... (metode atau atribut tambahan jika diperlukan)
 }

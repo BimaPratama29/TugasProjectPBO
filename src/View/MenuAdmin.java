@@ -7,9 +7,9 @@ public class MenuAdmin {
 
     public static void ListMenuAdmin(){
         int plh;
-        do{
+        do{ System.out.println("\n\n");
             System.out.println("--- Menu Admin ---");
-            System.out.println("1.View User\n2.ViewPembayaran\n3.Kembali");
+            System.out.println("1.View Stock\n2.View Penyewa\n3.View Transaksi Penyewa\n4.Kembali");
             System.out.println("---            ---");
 
             plh = input.nextInt();
