@@ -1,26 +1,33 @@
 package Model;
+import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
 import java.util.ArrayList;
 
 public class ModelUser {
    // public static NodeAdmin admin = new NodeAdmin();
-    ArrayList<NodeUser> userslist = new ArrayList<>();
+    private ArrayList<NodeUser> datausers = new ArrayList<>();
+
 
     public ModelUser() {
-        initUser();
+        datausers = new ArrayList<>();
     }
 
-    public void initUser() {
-        userslist.add(new NodeUser("admin","admin123"));
+    public void RegisterUser(String uname , String pass){
+        datausers.add(new NodeUser(uname , pass));
     }
+
     public void ViewAllUserSewa(){
-        for(int i=0 ; i < userslist.size();i++){
-            this.userslist.get(i).ViewUserSewa();
+        ArrayList <NodeUser> listuser = new ModelJSONUser().readFromJSON();
+        if (listuser != null){
+            for (NodeUser user : listuser){
+                user.ViewUserSewa();
+                System.out.println("===================");
+            }
         }
     }
-    public void registrasi (String uname , String pass){
-        userslist.add(new NodeUser(uname, pass));
+    public ArrayList<NodeUser>getListDatausers(){
+        return this.datausers;
     }
 }
 
