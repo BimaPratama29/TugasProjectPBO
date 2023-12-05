@@ -12,11 +12,12 @@ public class Main {
 
         int plh;
     
-        System.out.println(" ============================== ");
-        System.out.println("      ! Selamat Datang di ! ");
-        System.out.println("        Rental PS ITATS ");
-        System.out.println(" ============================== ");
-
+        String blueColor = "\u001B[34m";
+        System.out.println(blueColor + " ============================== ");
+        System.out.println(blueColor + "      ! Selamat Datang di ! ");
+        System.out.println(blueColor + "        Rental PS ITATS ");
+        System.out.println(blueColor + " ============================== ");
+        System.out.print("\u001B[0m"); // Reset warna ke default
         do {
             System.out.println("\n 1. Penyewa \n 2. Admin \n 3. Exit");
             System.out.println(" Pilih Menu Login. ");
