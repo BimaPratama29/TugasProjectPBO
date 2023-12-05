@@ -3,6 +3,9 @@ package View;
 import Model.ModelUser;
 
 import java.util.Scanner;
+import View.warna;
+
+import javax.swing.*;
 
 public class MenuUser {
     static ModelUser cUser = new ModelUser();
@@ -10,26 +13,30 @@ public class MenuUser {
     public static void ListMenuUser() {
         int plh;
 
+
         while (true) {
             System.out.println(" ============================== ");
             System.out.println("           Menu User ");
             System.out.println(" ============================== ");
-            System.out.println("\n 1. Buat Akun  \n 2. Login \n 3. Kembali");
-            System.out.println(" Pilih Opsi : ");
+            System.out.println(warna.color_green +"\n 1. Buat Akun  \n 2. Login \n 3. Kembali"+ warna.text_reset);
+            System.out.print(" Pilih Opsi : ");
 
             plh = input.nextInt();
+            input.nextLine();
+
+
 
             if (plh == 1) {
-                System.out.println("--- Registrasi Akun ---");
-                System.out.print("Masukkan username : ");
+                System.out.println(warna.color_purple+"--- Registrasi Akun ---"+warna.text_reset);
+                System.out.print(warna.color_blue+"Masukkan username : ");
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
                 cUser.RegisterUser(username, password);
-                System.out.println("Akun berhasil didaftarkan");
+                System.out.println(warna.color_green+"Akun berhasil didaftarkan"+warna.text_reset);
                 ListMenuUser();
             } else if (plh == 2) {
-                System.out.print("Masukkan username : ");
+                System.out.print(warna.color_blue+"Masukkan username : ");
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
@@ -46,8 +53,6 @@ public class MenuUser {
                 Main.main(null);
                 break;
             }
-
-
         }
     }
 }
