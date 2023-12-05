@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class ModelJSONUser {
     public String fname = "src/Database/user.json";
+    public ArrayList<NodeUser> readFromJSON;
 
     public ModelJSONUser() {
         // Konstruktor, jika diperlukan
