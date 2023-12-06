@@ -1,7 +1,10 @@
 package View;
 
 import Model.ModelUser;
+import ModelJSON.ModelJSONUser;
+import Node.NodeUser;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import View.warna;
 
@@ -9,6 +12,7 @@ import javax.swing.*;
 
 public class MenuUser {
     static ModelUser cUser = new ModelUser();
+    static ModelJSONUser cUserJSON = new ModelJSONUser();
     public static Scanner input = new Scanner(System.in);
     public static void ListMenuUser() {
         int plh;
@@ -38,9 +42,10 @@ public class MenuUser {
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
-                for (int i = 0; i < cUser.getListDatausers().size(); i++) {
-                    if (cUser.getListDatausers().get(i).uname.equals(username)) {
-                        if (cUser.getListDatausers().get(i).pass.equals(password)) {
+                ArrayList<NodeUser> userList = cUserJSON.bacaDariJSON();
+                for (int i = 0; i < userList.size(); i++) {
+                    if (userList.get(i).uname.equals(username)) {
+                        if (userList.get(i).pass.equals(password)) {
                             System.out.println(warna.color_green+ "Anda berhasil login sebagai user"+warna.text_reset);
                             MenuSewa.main(null);
                         }

@@ -1,7 +1,8 @@
 package Node;
 
-public class NodeStokBarang {private String namaBarang;
-    private int stok;
+public class NodeStokBarang {
+    String namaBarang;
+    int stok;
 
     public NodeStokBarang(String namaBarang, int stok) {
         this.namaBarang = namaBarang;

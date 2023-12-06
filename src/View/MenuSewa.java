@@ -28,6 +28,7 @@ public class MenuSewa {
                     System.out.println("           List Barang ");
                     System.out.println(" ============================== ");
                     modelStokBarang.ViewStok();
+                    break;
 
                 case 2:
                     System.out.println(" ============================== ");
@@ -40,12 +41,14 @@ public class MenuSewa {
                     System.out.print("Masukkan jumlah barang yang akan disewa: ");
                     int jumlahBarang = input.nextInt();
                     modelStokBarang.bookingSewa(kodeBarang, jumlahBarang);
+                    break;
 
                 case 3:
                     break;
 
                 default:
                     System.out.println("Pilihan tidak valid");
+                    break;
             }
         } while (pilih !=3 );
     }
