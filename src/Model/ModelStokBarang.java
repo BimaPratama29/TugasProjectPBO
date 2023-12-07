@@ -11,8 +11,8 @@ public class ModelStokBarang {
 
     private Map<String,NodeStokBarang> stokBarang = new HashMap<>();
     public ModelStokBarang(){
-      tambahStokBarang(warna.color_blue+"A001",warna.color_green+"Playstation 4" ,10);
-      tambahStokBarang(warna.color_blue+"A002",warna.color_green+"Playstation 5" ,5);
+      tambahStokBarang("A001","Playstation 4" ,10);
+      tambahStokBarang("A002","Playstation 5" ,5);
 
     }
 

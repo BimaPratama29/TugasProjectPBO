@@ -40,6 +40,9 @@ public class MenuSewa {
 
                     System.out.print("Masukkan jumlah barang yang akan disewa: ");
                     int jumlahBarang = input.nextInt();
+
+                    input.nextLine();
+                    
                     modelStokBarang.bookingSewa(kodeBarang, jumlahBarang);
                     break;
 
