@@ -33,12 +33,4 @@ public class NodeUser {
     public String getPass() {
         return this.pass;
     }
-
-    public class admin extends NodeUser {
-        public admin(String uname, String pass) {
-            super(uname, pass);
-        }
-    }
-
-
 }
