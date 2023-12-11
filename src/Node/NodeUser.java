@@ -33,4 +33,6 @@ public class NodeUser {
     public String getPass() {
         return this.pass;
     }
+    public void viewUser() {
+    }
 }

@@ -34,7 +34,7 @@ public class MenuUser {
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
-                cUser.RegisterUser(username, password);
+                cUser.registerUser(username, password);
                 System.out.println(warna.color_green+"Akun berhasil didaftarkan"+warna.text_reset);
                 ListMenuUser();
             } else if (plh == 2) {
@@ -42,7 +42,7 @@ public class MenuUser {
                 String username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
-                ArrayList<NodeUser> userList = cUserJSON.bacaDariJSON();
+                ArrayList<NodeUser> userList = cUserJSON.readFromJSON();
                 for (int i = 0; i < userList.size(); i++) {
                     if (userList.get(i).uname.equals(username)) {
                         if (userList.get(i).pass.equals(password)) {

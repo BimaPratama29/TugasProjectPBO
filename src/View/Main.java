@@ -61,7 +61,7 @@ public class Main {
 
         // Bagian dari blok kode pertama
         ModelJSONUser modelJSONUser = new ModelJSONUser();
-        ArrayList<NodeUser> userList = modelJSONUser.bacaDariJSON();
+        ArrayList<NodeUser> userList = modelJSONUser.readFromJSON();
 
         if (userList != null) {
             System.out.println("Jumlah pengguna: " + userList.size());
