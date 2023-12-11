@@ -44,6 +44,26 @@ public class ModelUser {
         System.out.println("User tidak ditemukan.");
     }
 
+    public void updateUser(String oldUname, String oldPass, String newUname, String newPass) {
+        boolean userFound = false;
+
+        for (NodeUser user : datausers) {
+            if (user.getUname().equals(oldUname) && user.getPass().equals(oldPass)) {
+                user.setUname(newUname);
+                user.setPass(newPass);
+                userFound = true;
+                break;
+            }
+        }
+
+        if (userFound) {
+            modelJSONUser.writeToJSON(datausers);
+            System.out.println("User berhasil diupdate.");
+        } else {
+            System.out.println("User tidak ditemukan.");
+        }
+    }
+
     public void deleteUser(String uname) {
         NodeUser userToRemove = null;
         for (NodeUser user : datausers) {
