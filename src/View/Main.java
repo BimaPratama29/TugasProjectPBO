@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ControllerUser;
 import Model.ModelAdmin;
 import Model.ModelUser;
 import ModelJSON.ModelJSONUser;
@@ -11,6 +12,9 @@ import java.util.ArrayList;
 public class Main {
     ModelJSONUser modelJSONUser = new ModelJSONUser();
     ArrayList<NodeUser> listUser1 = new ArrayList<>();
+    ModelUser modelUser = new ModelUser();
+    ControllerUser controllerUser = new ControllerUser(modelUser);
+    MenuUser menuUser = new MenuUser(controllerUser);
 
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
@@ -40,9 +44,9 @@ public class Main {
 
                 case 2:
                     // Admin
-                    System.out.println("Masukkan Username Admin : ");
+                    System.out.print("Masukkan Username Admin : ");
                     String user = input.nextLine();
-                    System.out.println("Masukkan Password Admin : ");
+                    System.out.print("Masukkan Password Admin : ");
                     String pass1 = input.nextLine();
                     if (admin.cekLogin(user, pass1)) {
                         System.out.println("Anda Berhasil Login");

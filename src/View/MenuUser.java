@@ -1,5 +1,6 @@
 package View;
 
+import Controller.ControllerUser;
 import Model.ModelUser;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
@@ -11,6 +12,10 @@ import View.warna;
 import javax.swing.*;
 
 public class MenuUser {
+    private ControllerUser controller;
+    public MenuUser(ControllerUser controller){
+        this.controller = controller;
+    }
     static ModelUser cUser = new ModelUser();
     static ModelJSONUser cUserJSON = new ModelJSONUser();
     public static Scanner input = new Scanner(System.in);

@@ -36,7 +36,7 @@ public class MenuAdmin {
                     modelUser.updateUser(oldUname, oldPass, newUname, newPass);
                     continue;
                 case 4:
-                input.nextLine();  // Membersihkan newline dari buffer sebelum membaca input
+                input.nextLine();
                 System.out.print("Masukkan username yang akan dihapus: ");
                 String unameToDelete = input.nextLine();
                 System.out.print("Masukkan password pengguna: ");
