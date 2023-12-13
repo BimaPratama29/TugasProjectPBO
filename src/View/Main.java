@@ -10,17 +10,16 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Main {
-    ModelJSONUser modelJSONUser = new ModelJSONUser();
-    ArrayList<NodeUser> listUser1 = new ArrayList<>();
-    ModelUser modelUser = new ModelUser();
-    ControllerUser controllerUser = new ControllerUser(modelUser);
-    MenuUser menuUser = new MenuUser(controllerUser);
 
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
-        Scanner input = new Scanner(System.in);
+        
         ModelUser modelUser = new ModelUser();
+        ControllerUser controllerUser = new ControllerUser(modelUser);
+        MenuUser menuUser = new MenuUser(controllerUser);
+        MenuAdmin menuAdmin = new MenuAdmin(controllerUser);
 
+        Scanner input = new Scanner(System.in);
         int plh;
 
         System.out.println(" ============================== ");
@@ -38,42 +37,17 @@ public class Main {
             switch (plh) {
                 case 1:
                     // User
-                    ModelJSONUser modelJSONUser = new ModelJSONUser();
-                    ArrayList<NodeUser> listUser1 = new ArrayList<>();
-                    MenuUser.ListMenuUser();
+                    menuUser.ListMenuUser();
 
                 case 2:
+
                     // Admin
-                    System.out.print("Masukkan Username Admin : ");
-                    String user = input.nextLine();
-                    System.out.print("Masukkan Password Admin : ");
-                    String pass1 = input.nextLine();
-                    if (admin.cekLogin(user, pass1)) {
-                        System.out.println("Anda Berhasil Login");
-                        MenuAdmin.ListMenuAdmin();
-                        break;
-                    } else {
-                        System.out.println("user dan pass salah");
-                    }
+                    menuAdmin.loginAdmin();
                     break;
-                case 3:
-                    break;
-                default:
-                    System.out.println(" Pilihan Tidak Tersedia.");
             }
         } while (plh != 3);
 
         // Bagian dari blok kode pertama
-        ModelJSONUser modelJSONUser = new ModelJSONUser();
-        ArrayList<NodeUser> userList = modelJSONUser.readFromJSON();
-
-        if (userList != null) {
-            System.out.println("Jumlah pengguna: " + userList.size());
-            for (NodeUser user : userList) {
-                System.out.println("Username: " + user.getUname() + ", Password: " + user.getPass());
-            }
-        } else {
-            System.out.println("Tidak ada data pengguna.");
-        }
+        
     }
 }

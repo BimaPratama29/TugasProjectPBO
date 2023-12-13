@@ -2,6 +2,7 @@ package Model;
 
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
+import View.MenuSewa;
 
 import java.util.ArrayList;
 import Node.NodeUser;
@@ -25,6 +26,18 @@ public class ModelUser {
         modelJSONUser.writeToJSON(datausers);
     }
 
+    public boolean loginUser(String uname, String pass){
+        ArrayList<NodeUser> userList = modelJSONUser.readFromJSON();
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).uname.equals(uname)) {
+                if (userList.get(i).pass.equals(pass)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public void viewAllUsers() {
         for (NodeUser user : datausers) {
             user.viewUser();
@@ -32,17 +45,17 @@ public class ModelUser {
         }
     }
 
-    public void updateUser(String uname, String newPass) {
-        for (NodeUser user : datausers) {
-            if (user.getUname().equals(uname)) {
-                user.setPass(newPass);
-                modelJSONUser.writeToJSON(datausers);
-                System.out.println("User berhasil diupdate.");
-                return;
-            }
-        }
-        System.out.println("User tidak ditemukan.");
-    }
+    // public void updateUser(String uname, String newPass) {
+    //     for (NodeUser user : datausers) {
+    //         if (user.getUname().equals(uname)) {
+    //             user.setPass(newPass);
+    //             modelJSONUser.writeToJSON(datausers);
+    //             System.out.println("User berhasil diupdate.");
+    //             return;
+    //         }
+    //     }
+    //     System.out.println("User tidak ditemukan.");
+    // }
 
     public void updateUser(String oldUname, String oldPass, String newUname, String newPass) {
         boolean userFound = false;
