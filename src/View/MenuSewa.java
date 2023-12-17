@@ -1,24 +1,23 @@
 package View;
 
-import java.util.Scanner;
+import Model.ModelBarang;
+import Node.NodeBarang;
+import ModelJSON.ModelJSONBarang;
 
-import Model.ModelStokBarang;
-import View.MenuSewa;
+import java.util.Scanner;
 
 public class MenuSewa {
     public static Scanner input = new Scanner(System.in);
 
-
     public static void main(String[] args) {
-        ModelStokBarang modelStokBarang = new ModelStokBarang();
+        ModelBarang modelBarang = new ModelBarang();
         int pilih;
         do {
             System.out.println(" ============================== ");
             System.out.println("           Menu Sewa ");
             System.out.println(" ============================== ");
-            System.out.println(warna.color_green + "\n 1. Lihat Stok  \n 2. Booking Sewa \n 3. Kembali" + warna.text_reset);
+            System.out.println(" 1. Lihat Stok  \n 2. Booking Sewa \n 3. Kembali");
             System.out.print(" Pilih Opsi : ");
-
 
             pilih = input.nextInt();
             input.nextLine();
@@ -27,7 +26,7 @@ public class MenuSewa {
                     System.out.println(" ============================== ");
                     System.out.println("           List Barang ");
                     System.out.println(" ============================== ");
-                    modelStokBarang.ViewStok();
+                    modelBarang.ViewStok();
                     break;
 
                 case 2:
@@ -43,7 +42,7 @@ public class MenuSewa {
 
                     input.nextLine();
                     
-                    modelStokBarang.bookingSewa(kodeBarang, jumlahBarang);
+                    modelBarang.bookingSewa(kodeBarang, jumlahBarang);
                     break;
 
                 case 3:
@@ -53,7 +52,8 @@ public class MenuSewa {
                     System.out.println("Pilihan tidak valid");
                     break;
             }
-        } while (pilih !=3 );
+        } while (pilih != 3);
+        // Setelah selesai operasi, Anda bisa menambahkan logika untuk menulis ke JSON
+        // Contoh: ModelJSONBarang.writeToJSON(modelBarang.getStokBarang());
     }
 }
-

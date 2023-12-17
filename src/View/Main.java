@@ -7,13 +7,12 @@ import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
 
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Main {
 
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
-        
+
         ModelUser modelUser = new ModelUser();
         ControllerUser controllerUser = new ControllerUser(modelUser);
         MenuUser menuUser = new MenuUser(controllerUser);
@@ -38,16 +37,12 @@ public class Main {
                 case 1:
                     // User
                     menuUser.ListMenuUser();
-
+                    break;
                 case 2:
-
                     // Admin
                     menuAdmin.loginAdmin();
                     break;
             }
         } while (plh != 3);
-
-        // Bagian dari blok kode pertama
-        
     }
 }
