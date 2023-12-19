@@ -2,6 +2,7 @@ package View;
 
 import Controller.ControllerUser;
 import Model.ModelAdmin;
+import Model.ModelPembayaran;
 import Model.ModelUser;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
@@ -9,14 +10,16 @@ import Node.NodeUser;
 import java.util.Scanner;
 
 public class Main {
+    static ModelUser modelUser = new ModelUser();
+    public  static ControllerUser controllerUser = new ControllerUser(modelUser);
+    static MenuUser menuUser = new MenuUser(controllerUser);
+    static MenuAdmin menuAdmin = new MenuAdmin(controllerUser);
+    public  static ModelPembayaran modelPembayaran = new ModelPembayaran();
 
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
 
-        ModelUser modelUser = new ModelUser();
-        ControllerUser controllerUser = new ControllerUser(modelUser);
-        MenuUser menuUser = new MenuUser(controllerUser);
-        MenuAdmin menuAdmin = new MenuAdmin(controllerUser);
+
 
         Scanner input = new Scanner(System.in);
         int plh;

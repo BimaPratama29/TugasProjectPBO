@@ -1,3 +1,4 @@
+
 package View;
 
 import Model.ModelBarang;
@@ -16,7 +17,7 @@ public class MenuSewa {
             System.out.println(" ============================== ");
             System.out.println("           Menu Sewa ");
             System.out.println(" ============================== ");
-            System.out.println(" 1. Lihat Stok  \n 2. Booking Sewa \n 3. Kembali");
+            System.out.println(" 1. Lihat Stok  \n 2. Booking Sewa \n 3. Pembayaran \n 4. Kembali");
             System.out.print(" Pilih Opsi : ");
 
             pilih = input.nextInt();
@@ -29,7 +30,7 @@ public class MenuSewa {
                     modelBarang.ViewStok();
                     break;
 
-                    case 2:
+                case 2:
                     System.out.println(" ============================== ");
                     System.out.println("           Booking Sewa ");
                     System.out.println(" ============================== ");
@@ -48,8 +49,13 @@ public class MenuSewa {
                     // Tambahkan baris berikut untuk menyimpan booking ke ModelBarang
                     modelBarang.bookingSewa(kodeBarang, jumlahBarang, username);
                     break;
-
                 case 3:
+                    System.out.println(" ============================== ");
+                    System.out.println("           Pembayaran ");
+                    System.out.println(" ============================== ");
+                    MenuPembayaran menubayar = new MenuPembayaran(Main.controllerUser, Main.modelPembayaran);
+                    menubayar.viewBayar(null);
+                case 4:
                     break;
 
                 default:
@@ -57,7 +63,6 @@ public class MenuSewa {
                     break;
             }
         } while (pilih != 3);
-        // Setelah selesai operasi, Anda bisa menambahkan logika untuk menulis ke JSON
-        // Contoh: ModelJSONBarang.writeToJSON(modelBarang.getStokBarang());
+
     }
 }

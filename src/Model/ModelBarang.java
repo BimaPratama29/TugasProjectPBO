@@ -76,4 +76,7 @@ public class ModelBarang {
     public List<NodeJSONSewa> getSewaList() {
         return sewaList;
     }
+
+    public void bookingSewa(String kodeBarang, int jumlah) {
+    }
 }

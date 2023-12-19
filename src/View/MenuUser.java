@@ -12,13 +12,16 @@ import View.warna;
 import javax.swing.*;
 
 public class MenuUser {
+    public static Scanner input = new Scanner(System.in);
     private ControllerUser controllerUser;
+    public static String username;
+
     public MenuUser(ControllerUser controller){
         this.controllerUser = controller;
     }
     // ModelUser cUser = new ModelUser();
     // ModelJSONUser cUserJSON = new ModelJSONUser();
-    public Scanner input = new Scanner(System.in);
+
     public void ListMenuUser() {
         int plh;
         do {
@@ -45,7 +48,7 @@ public class MenuUser {
                 ListMenuUser();
             } else if (plh == 2) {
                 System.out.print(warna.color_purple+"Masukkan username : ");
-                String username = input.nextLine();
+                username = input.nextLine();
                 System.out.print("Masukkan password : ");
                 String password = input.nextLine();
                 controllerUser.loginUser(username, password);
