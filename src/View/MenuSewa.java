@@ -29,7 +29,7 @@ public class MenuSewa {
                     modelBarang.ViewStok();
                     break;
 
-                case 2:
+                    case 2:
                     System.out.println(" ============================== ");
                     System.out.println("           Booking Sewa ");
                     System.out.println(" ============================== ");
@@ -41,8 +41,12 @@ public class MenuSewa {
                     int jumlahBarang = input.nextInt();
 
                     input.nextLine();
-                    
-                    modelBarang.bookingSewa(kodeBarang, jumlahBarang);
+
+                    System.out.print("Masukkan username Anda: ");
+                    String username = input.nextLine();
+
+                    // Tambahkan baris berikut untuk menyimpan booking ke ModelBarang
+                    modelBarang.bookingSewa(kodeBarang, jumlahBarang, username);
                     break;
 
                 case 3:

@@ -5,11 +5,13 @@ import Model.ModelAdmin;
 import Model.ModelUser;
 import ModelJSON.ModelJSONUser;
 import Node.NodeUser;
+import NodeJSON.NodeJSONSewa;
 import ModelJSON.ModelJSONAdmin;
 import Model.ModelBarang;
 import ModelJSON.ModelJSONBarang;
 import Node.NodeBarang;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuAdmin {
@@ -48,7 +50,7 @@ public class MenuAdmin {
             System.out.println("=====================================");
             System.out.println("            Menu Admin ");
             System.out.println("=====================================");
-            System.out.println(warna.color_green + " 1.View User\n 2.View Transaksi\n 3.Update User\n 4.Delete User \n 5.Kembali\n 6.Tambah Barang");
+            System.out.println(warna.color_green + " 1.View User\n 2.View Transaksi\n 3.Update User\n 4.Delete User \n 5.Kembali\n 6.Tambah Barang \n 7.View User Sewa");
             System.out.print(" Input Pilihan : ");
             plh = input.nextInt();
 
@@ -84,6 +86,10 @@ public class MenuAdmin {
                     break;
                 case 6:
                     tambahBarang();
+                    break;
+                case 7:
+                    // Menampilkan data user yang sedang menyewa
+                    viewUserSewa();
                     break;
                 default:
                     System.out.println(" Pilihan Tidak Tersedia.");
@@ -123,4 +129,24 @@ public class MenuAdmin {
 
         System.out.println("Barang berhasil ditambahkan.");
     }
+
+
+    private static void viewUserSewa() {
+    ModelBarang modelBarang = new ModelBarang();
+    List<NodeJSONSewa> dataSewa = modelBarang.getSewaList();
+
+    if (dataSewa.isEmpty()) {
+        System.out.println("Tidak ada data user yang sedang menyewa.");
+    } else {
+        System.out.println("=====================================");
+        System.out.println("     Data User yang Sedang Menyewa");
+        System.out.println("=====================================");
+        for (NodeJSONSewa sewa : dataSewa) {
+            System.out.println("Kode Barang: " + sewa.getNamaBarang());
+            System.out.println("Nama Barang: " + sewa.getNamaBarang());
+            System.out.println("Username User: " + sewa.getUsername());
+            System.out.println("-------------------------------");
+        }
+    }
+}
 }
