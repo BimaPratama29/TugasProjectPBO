@@ -13,7 +13,7 @@ public class ModelJSONUser {
     private String fname = "src/Database/user.json";
 
     public ModelJSONUser() {
-        // Konstruktor, jika diperlukan
+        // Konstruktor, jika diperlukan 
     }
 
     public void writeToJSON(ArrayList<NodeUser> listUser) {

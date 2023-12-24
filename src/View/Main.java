@@ -1,5 +1,4 @@
 package View;
-
 import Controller.ControllerUser;
 import Model.ModelAdmin;
 import Model.ModelPembayaran;
@@ -14,7 +13,7 @@ public class Main {
     public  static ControllerUser controllerUser = new ControllerUser(modelUser);
     static MenuUser menuUser = new MenuUser(controllerUser);
     static MenuAdmin menuAdmin = new MenuAdmin(controllerUser);
-    public  static ModelPembayaran modelPembayaran = new ModelPembayaran();
+    static ModelPembayaran modelPembayaran = new ModelPembayaran();
 
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
