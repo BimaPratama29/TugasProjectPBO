@@ -2,14 +2,11 @@ package View;
 
 import Controller.ControllerUser;
 import Model.ModelAdmin;
-import Model.ModelUser;
-import ModelJSON.ModelJSONUser;
-import Node.NodeUser;
-import NodeJSON.NodeJSONSewa;
-import ModelJSON.ModelJSONAdmin;
 import Model.ModelBarang;
+import Model.ModelUser;
 import ModelJSON.ModelJSONBarang;
 import Node.NodeBarang;
+import NodeJSON.NodeJSONSewa;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,14 +15,14 @@ public class MenuAdmin {
     public static Scanner input = new Scanner(System.in);
     static ModelUser modelUser = new ModelUser();
     static ModelAdmin modelAdmin = new ModelAdmin();
-    private ControllerUser controller;
+    ControllerUser controller;
 
     public MenuAdmin(ControllerUser controller) {
         this.controller = controller;
     }
 
     public static void main(String[] args) {
-        loginAdmin(); // Call the login method to start
+        loginAdmin(); // Panggil metode login untuk memulai
     }
 
     public static void loginAdmin() {
@@ -36,10 +33,10 @@ public class MenuAdmin {
 
         if (modelAdmin.cekLogin(user, pass1)) {
             System.out.println("Anda Berhasil Login");
-            listMenuAdmin(); // Call the main menu after successful login
+            listMenuAdmin(); // Panggil menu utama setelah login berhasil
         } else {
             System.out.println("Username atau password salah");
-            loginAdmin(); // Retry login if unsuccessful
+            loginAdmin(); // Ulangi login jika tidak berhasil
         }
     }
 
@@ -50,7 +47,7 @@ public class MenuAdmin {
             System.out.println("=====================================");
             System.out.println("            Menu Admin ");
             System.out.println("=====================================");
-            System.out.println(warna.color_green + " 1.View User\n 2.View Transaksi\n 3.Update User\n 4.Delete User \n 5.Kembali\n 6.Tambah Barang \n 7.View User Sewa");
+            System.out.println(" 1.View User\n 2.View Transaksi\n 3.Update User\n 4.Delete User \n 5.Kembali\n 6.Tambah Barang \n 7.View User Sewa");
             System.out.print(" Input Pilihan : ");
             plh = input.nextInt();
 
@@ -59,10 +56,10 @@ public class MenuAdmin {
                     modelUser.viewAllUsers();
                     break;
                 case 2:
-                    // modelUser.viewPembayaran(); // Uncomment this line if the method exists
+                    // modelUser.viewPembayaran(); // Hapus komentar pada baris ini jika metodenya ada
                     break;
                 case 3:
-                    input.nextLine(); // Consume the newline character
+                    input.nextLine(); // Membersihkan newline character
                     System.out.print("Masukkan username lama: ");
                     String oldUname = input.nextLine();
                     System.out.print("Masukkan password lama: ");
@@ -74,11 +71,11 @@ public class MenuAdmin {
                     modelUser.updateUser(oldUname, oldPass, newUname, newPass);
                     break;
                 case 4:
-                    input.nextLine(); // Consume the newline character
+                    input.nextLine(); //
                     System.out.print("Masukkan username yang akan dihapus: ");
                     String unameToDelete = input.nextLine();
                     System.out.print("Masukkan password pengguna: ");
-                    String passToDelete = input.nextLine();
+                    input.nextLine();
                     modelUser.deleteUser(unameToDelete);
                     break;
                 case 5:
@@ -99,7 +96,7 @@ public class MenuAdmin {
 
     // Metode untuk menambahkan barang
     public static void tambahBarang() {
-        input.nextLine(); // Consume the newline character
+        input.nextLine(); // Membersihkan newline character
         System.out.print("Masukkan kode barang: ");
         String kodeBarang = input.nextLine();
         System.out.print("Masukkan nama barang: ");
@@ -123,30 +120,28 @@ public class MenuAdmin {
         ModelBarang modelBarang = new ModelBarang();
         modelBarang.tambahStokBarang(kodeBarang, namaBarang, stokBarang);
 
-        // Tambahkan baris berikut untuk menyimpan data ke JSON
         ModelJSONBarang modelJSONBarang = new ModelJSONBarang();
         modelJSONBarang.tambahDataJSON(new NodeBarang(kodeBarang, namaBarang, stokBarang));
 
         System.out.println("Barang berhasil ditambahkan.");
     }
 
-
     private static void viewUserSewa() {
-    ModelBarang modelBarang = new ModelBarang();
-    List<NodeJSONSewa> dataSewa = modelBarang.getSewaList();
+        ModelBarang modelBarang = new ModelBarang();
+        List<NodeJSONSewa> dataSewa = modelBarang.getSewaList();
 
-    if (dataSewa.isEmpty()) {
-        System.out.println("Tidak ada data user yang sedang menyewa.");
-    } else {
-        System.out.println("=====================================");
-        System.out.println("     Data User yang Sedang Menyewa");
-        System.out.println("=====================================");
-        for (NodeJSONSewa sewa : dataSewa) {
-            System.out.println("Kode Barang: " + sewa.getNamaBarang());
-            System.out.println("Nama Barang: " + sewa.getNamaBarang());
-            System.out.println("Username User: " + sewa.getUsername());
-            System.out.println("-------------------------------");
+        if (dataSewa.isEmpty()) {
+            System.out.println("Tidak ada data user yang sedang menyewa.");
+        } else {
+            System.out.println("=====================================");
+            System.out.println("     Data User yang Sedang Menyewa");
+            System.out.println("=====================================");
+            for (NodeJSONSewa sewa : dataSewa) {
+                System.out.println("Kode Barang: " + sewa.getNamaBarang());
+                System.out.println("Nama Barang: " + sewa.getNamaBarang());
+                System.out.println("Username User: " + sewa.getUsername());
+                System.out.println("-------------------------------");
+            }
         }
     }
-}
 }

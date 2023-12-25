@@ -14,10 +14,11 @@ public class ModelBarang {
     private List<NodeJSONSewa> sewaList = new ArrayList<>();
 
     public ModelBarang() {
-        ModelJSONBarang modelJSONBarang = new ModelJSONBarang();
-        this.stokBarang = modelJSONBarang.readFromJSON();
+
         ModelJSONSewa modelJSONSewa = new ModelJSONSewa();
         this.sewaList = modelJSONSewa.readFromJSON();
+        ModelJSONBarang modelJSONBarang = new ModelJSONBarang();
+        stokBarang = modelJSONBarang.readFromJSON();
     }
 
     public void ViewStok() {
@@ -47,7 +48,7 @@ public class ModelBarang {
 
                 // Update stok yang telah berubah ke dalam file JSON
                 ModelJSONBarang modelJSONBarang = new ModelJSONBarang();
-                modelJSONBarang.updateStokBarang(getStokBarang());
+                modelJSONBarang.updateStokBarang(stokBarang);
             } else {
                 System.out.println("Stok tidak mencukupi untuk booking.");
             }
@@ -75,8 +76,5 @@ public class ModelBarang {
 
     public List<NodeJSONSewa> getSewaList() {
         return sewaList;
-    }
-
-    public void bookingSewa(String kodeBarang, int jumlah) {
     }
 }

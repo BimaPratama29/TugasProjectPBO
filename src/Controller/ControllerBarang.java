@@ -21,7 +21,7 @@ public class ControllerBarang {
     }
 
     public void bookingSewa(String kodeBarang, int jumlah) {
-        model.bookingSewa(kodeBarang, jumlah);
+        model.bookingSewa(kodeBarang, jumlah, kodeBarang);
     }
 
     public List<NodeBarang> getStokBarang() {

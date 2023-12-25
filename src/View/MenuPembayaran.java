@@ -2,7 +2,6 @@ package View;
 
 import Controller.ControllerUser;
 import Model.ModelPembayaran;
-import ModelJSON.ModelJSONPembayaran;
 import Node.NodePembayaran;
 import Node.NodeUser;
 
@@ -50,10 +49,6 @@ public class MenuPembayaran {
                     if(kembalian > 0){
                         System.out.print("kembalian : "+kembalian);
                     }
-
-
-                    ModelJSONPembayaran modelJSONPembayaran = new ModelJSONPembayaran();
-                    modelJSONPembayaran.tambahBayarJSON(new NodePembayaran(MenuUser.username, totalPembayaran , hargabarang , kembalian));
                     break;
                 case 3:
                     System.out.println(" Kembali ke Menu User....");
@@ -63,4 +58,5 @@ public class MenuPembayaran {
             }
         } while (pil != 3);
     }
+
 }

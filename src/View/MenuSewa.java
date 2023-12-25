@@ -3,14 +3,18 @@ package View;
 import Model.ModelBarang;
 import Node.NodeBarang;
 import ModelJSON.ModelJSONBarang;
+import NodeJSON.NodeJSONSewa;
 
 import java.util.Scanner;
+// ...
 
 public class MenuSewa {
-    public static Scanner input = new Scanner(System.in);
+    private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
         ModelBarang modelBarang = new ModelBarang();
+        ModelJSONBarang modelJSONBarang = new ModelJSONBarang();
+
         int pilih;
         do {
             System.out.println(" ============================== ");
@@ -20,7 +24,8 @@ public class MenuSewa {
             System.out.print(" Pilih Opsi : ");
 
             pilih = input.nextInt();
-            input.nextLine();
+            input.nextLine(); // Membersihkan buffer setelah nextInt()
+
             switch (pilih) {
                 case 1:
                     System.out.println(" ============================== ");
@@ -40,28 +45,31 @@ public class MenuSewa {
                     System.out.print("Masukkan jumlah barang yang akan disewa: ");
                     int jumlahBarang = input.nextInt();
 
-                    input.nextLine();
+                    input.nextLine(); // Membersihkan buffer setelah nextInt()
 
                     System.out.print("Masukkan username Anda: ");
                     String username = input.nextLine();
 
                     // Tambahkan baris berikut untuk menyimpan booking ke ModelBarang
                     modelBarang.bookingSewa(kodeBarang, jumlahBarang, username);
+
+                    // Tambahkan baris berikut untuk menyimpan data booking ke JSON
+                    modelJSONBarang.tambahDataJSON(new NodeJSONSewa(kodeBarang, "", username, jumlahBarang, ""));
+
                     break;
                 case 3:
                     System.out.println(" ============================== ");
                     System.out.println("           Pembayaran ");
                     System.out.println(" ============================== ");
-                    MenuPembayaran menubayar = new MenuPembayaran(Main.controllerUser, Main.modelPembayaran);
-                    menubayar.viewBayar(null);
+                    MenuPembayaran menuBayar = new MenuPembayaran(Main.controllerUser, Main.modelPembayaran);
+                    menuBayar.viewBayar(null);
+                    break;
                 case 4:
                     break;
-
                 default:
                     System.out.println("Pilihan tidak valid");
                     break;
             }
-        } while (pilih != 3);
-
+        } while (pilih != 4);
     }
 }

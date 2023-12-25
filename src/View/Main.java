@@ -10,15 +10,13 @@ import java.util.Scanner;
 
 public class Main {
     static ModelUser modelUser = new ModelUser();
-    public  static ControllerUser controllerUser = new ControllerUser(modelUser);
+    public static ControllerUser controllerUser = new ControllerUser(modelUser);
     static MenuUser menuUser = new MenuUser(controllerUser);
     static MenuAdmin menuAdmin = new MenuAdmin(controllerUser);
     static ModelPembayaran modelPembayaran = new ModelPembayaran();
 
     public static void main(String[] args) {
         ModelAdmin admin = new ModelAdmin();
-
-
 
         Scanner input = new Scanner(System.in);
         int plh;

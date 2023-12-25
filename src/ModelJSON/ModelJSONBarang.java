@@ -1,91 +1,78 @@
 package ModelJSON;
 
 import Node.NodeBarang;
+import NodeJSON.NodeJSONSewa;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ModelJSONBarang {
-    private String fname = "src/Database/barang.json";
-    List<NodeBarang> stokBarang;
+    private static final String FILE_PATH_BARANG = "src/Database/barang.json";
 
-    public ModelJSONBarang() {
-        // Constructor
-        this.stokBarang = readFromJSON(); // Read data when the object is created
-    }
-
-    public void writeToJSON(List<NodeBarang> stokBarang) {
-        try (FileWriter file = new FileWriter(fname)) {
-            JSONArray arrayBarang = convertListToJSONArray(stokBarang);
-            file.write(arrayBarang.toJSONString());
-        } catch (IOException e) {
-            e.printStackTrace();
-            throw new RuntimeException("Failed to write to JSON file: " + e.getMessage());
-        }
-    }
-
+    @SuppressWarnings("unchecked")
     public List<NodeBarang> readFromJSON() {
-        JSONParser parser = new JSONParser();
         List<NodeBarang> stokBarang = new ArrayList<>();
 
-        try (FileReader reader = new FileReader(fname)) {
-            Object obj = parser.parse(reader);
-            JSONArray arrayBarang = (JSONArray) obj;
+        try (FileReader reader = new FileReader(FILE_PATH_BARANG)) {
+            // Read JSON file
+            JSONObject jsonObject = (JSONObject) new org.json.simple.parser.JSONParser().parse(reader);
 
-            for (Object o : arrayBarang) {
-                JSONObject jsonObject = (JSONObject) o;
-                String kodeBarang = (String) jsonObject.get("kodeBarang");
-                String namaBarang = (String) jsonObject.get("namaBarang");
-                long stok = (long) jsonObject.get("stok");
+            // Get stokbarang array from JSON
+            JSONArray stokBarangArray = (JSONArray) jsonObject.get("stokbarang");
 
-                NodeBarang barang = new NodeBarang(kodeBarang, namaBarang, (int) stok);
-                stokBarang.add(barang);
+            // Iterate over stokbarang array and add each node to the list
+            Iterator<JSONObject> iterator = stokBarangArray.iterator();
+            while (iterator.hasNext()) {
+                JSONObject nodeObject = iterator.next();
+                NodeBarang nodeBarang = new NodeBarang(
+                        (String) nodeObject.get("kodeBarang"),
+                        (String) nodeObject.get("namaBarang"),
+                        ((Long) nodeObject.get("stok")).intValue()
+                );
+                stokBarang.add(nodeBarang);
             }
-
-        } catch (IOException | ParseException e) {
+        } catch (IOException | org.json.simple.parser.ParseException e) {
             e.printStackTrace();
         }
 
         return stokBarang;
     }
 
-    private JSONArray convertListToJSONArray(List<NodeBarang> stokBarang) {
-        JSONArray arrayBarang = new JSONArray();
-        for (NodeBarang barang : stokBarang) {
-            JSONObject objBarang = new JSONObject();
-            objBarang.put("kodeBarang", barang.getKodeBarang());
-            objBarang.put("namaBarang", barang.getNamaBarang());
-            objBarang.put("stok", barang.getStok());
-            arrayBarang.add(objBarang);
+    @SuppressWarnings("unchecked")
+    public void updateStokBarang(List<NodeBarang> stokBarang) {
+        JSONObject jsonObject = new JSONObject();
+        JSONArray stokBarangArray = new JSONArray();
+
+        // Convert each node in stokBarang to JSON format and add to stokBarangArray
+        for (NodeBarang nodeBarang : stokBarang) {
+            JSONObject nodeObject = new JSONObject();
+            nodeObject.put("kodeBarang", nodeBarang.getKodeBarang());
+            nodeObject.put("namaBarang", nodeBarang.getNamaBarang());
+            nodeObject.put("stok", nodeBarang.getStok());
+            stokBarangArray.add(nodeObject);
         }
-        return arrayBarang;
-    }
 
-    public void tambahDataJSON(NodeBarang barang) {
-        try {
-            // Read existing data
-            List<NodeBarang> stokBarang = readFromJSON();
+        jsonObject.put("stokbarang", stokBarangArray);
 
-            // Add new data
-            stokBarang.add(barang);
-
-            // Write back to JSON file
-            writeToJSON(stokBarang);
-            System.out.println("Data added successfully and written to the JSON file.");
-        } catch (Exception e) {
+        try (FileWriter writer = new FileWriter(FILE_PATH_BARANG)) {
+            // Write the updated JSON data back to the file
+            writer.write(jsonObject.toJSONString());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void updateStokBarang(List<NodeBarang> updatedStokBarang) {
-        // Write the updated data back to the JSON file
-        writeToJSON(updatedStokBarang);
+    @SuppressWarnings("unchecked")
+    public void tambahDataJSON(NodeJSONSewa nodeJSONSewa) {
+        
+    }
+
+    public void tambahDataJSON(NodeBarang nodeBarang) {
     }
 }
